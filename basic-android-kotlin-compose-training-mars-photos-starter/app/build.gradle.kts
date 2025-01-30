@@ -95,3 +95,18 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation("androidx.compose.ui:ui-tooling")
 }
+
+// Retrofit y Gson
+implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+// Corrutinas
+implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+// ViewModel y LiveData
+implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+
+// Dagger
+implementation 'com.google.dagger:dagger:2.x'
+kapt 'com.google.dagger:dagger-compiler:2.x'
