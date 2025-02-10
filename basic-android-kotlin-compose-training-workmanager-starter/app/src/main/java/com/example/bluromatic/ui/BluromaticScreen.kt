@@ -39,6 +39,8 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
@@ -140,11 +142,23 @@ private fun BlurActions(
         modifier = modifier,
         horizontalArrangement = Arrangement.Center
     ) {
-        Button(
+        /*Button(
             onClick = onStartClick,
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(stringResource(R.string.start))
+        }*/
+        when (blurUiState) {
+            is BlurUiState.Default -> {
+                Button(onStartClick) { Text(stringResource(R.string.start)) }
+            }
+            is BlurUiState.Loading -> {
+                FilledTonalButton(onCancelClick) { Text(stringResource(R.string.cancel_work)) }
+                CircularProgressIndicator(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)))
+            }
+            is BlurUiState.Complete -> {
+                Button(onStartClick) { Text(stringResource(R.string.start)) }
+            }
         }
     }
 }
