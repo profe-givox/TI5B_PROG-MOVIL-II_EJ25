@@ -39,12 +39,12 @@ private val sUriMatcher = UriMatcher(UriMatcher.NO_MATCH).apply {
 }
 
 
-class MiProveedorInventario (val ctx : Context) : ContentProvider() {
+class MiProveedorInventario  : ContentProvider() {
 
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreate(): Boolean {
-        TODO("Not yet implemented")
+        return true
     }
 
     override fun query(
@@ -59,8 +59,9 @@ class MiProveedorInventario (val ctx : Context) : ContentProvider() {
 
         when(sUriMatcher.match(p0)){
             1 ->  {
+
                 val inventario =
-                    (ctx as InventoryApplication).container.itemsRepository.getAllItemsStream()
+                    (context as InventoryApplication).container.itemsRepository.getAllItemsStream()
 
                         val job = coroutineScope.launch {
                              withContext(Dispatchers.IO) {
@@ -74,9 +75,7 @@ class MiProveedorInventario (val ctx : Context) : ContentProvider() {
                                 }
                             }
                         }
-
                         runBlocking { job.join() }
-
             }
         }
 
@@ -84,18 +83,23 @@ class MiProveedorInventario (val ctx : Context) : ContentProvider() {
     }
 
     override fun getType(p0: Uri): String? {
-        TODO("Not yet implemented")
+        return when(sUriMatcher.match(p0)){
+            1 ->  "vnd.android.cursor.dir/vnd.com.example.inventory.provider.products"
+            2 ->  "vnd.android.cursor.item/vnd.com.example.inventory.provider.products"
+            3 ->  "vnd.android.cursor.dir/vnd.com.example.inventory.provider.products"
+            else -> "vnd.android.cursor.dir/vnd.com.example.inventory.provider.products"
+        }
     }
 
     override fun insert(p0: Uri, p1: ContentValues?): Uri? {
-        TODO("Not yet implemented")
+        return  null
     }
 
     override fun delete(p0: Uri, p1: String?, p2: Array<out String>?): Int {
-        TODO("Not yet implemented")
+        return  0
     }
 
     override fun update(p0: Uri, p1: ContentValues?, p2: String?, p3: Array<out String>?): Int {
-        TODO("Not yet implemented")
+        return  0
     }
 }
