@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
         if (c != null) {
             while (c.moveToNext()){
                 Log.i("ContentProvier Inventory",
-                    " ${c.getInt(0)} - ${c.getString(2)}")
+                    " ${c.getInt(0)} - ${c.getString(1)}")
             }
         }
     }

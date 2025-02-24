@@ -40,8 +40,8 @@
         <provider
             android:authorities="com.example.inventory.provider"
             android:name=".provider.MiProveedorInventario"
-            android:enabled="true"
             android:exported="true"
+            android:enabled="true"
             >
 
         </provider>
