@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">net.ivanvega.androidfcm2024b</string>
+    <string name="default_notification_channel_id">CANAL XXX</string>
+    <string name="msg_token_fmt">token %s</string>
+</resources>
